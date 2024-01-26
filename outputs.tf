@@ -1,7 +1,3 @@
-output "existing_instances" {
-    value = data.restapi_object.existing_instances.api_data
-}
-
-output "aura_token" {
-    value = "${data.external.aura_authentication.result}"
+output "existing_instance" {
+    value = data.http.get_instances.response_body
 }
