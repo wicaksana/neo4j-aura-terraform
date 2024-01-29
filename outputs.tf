@@ -1,3 +1,3 @@
-output "existing_instance" {
-    value = data.http.get_instances.response_body
+output "new_instance_status" {
+    value = data.http.create_aura_instance.response_body
 }

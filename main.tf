@@ -7,15 +7,25 @@ data "http" "aura_authentication" {
   method              = "POST"
   request_headers     = {
                           "Authorization" = "Basic ${base64encode(join(":", [var.client_id, var.client_secret]))}"
-                          "Content-Type" = "application/x-www-form-urlencoded"
+                          "Content-Type"  = "application/x-www-form-urlencoded"
                         }
   request_body        = "grant_type=client_credentials"
 }
 
-data "http" "get_instances" {
+data "http" "create_aura_instance" {
   url                 = "https://api.neo4j.io/v1/instances"
-  method              = "GET"
+  method              = "POST"
   request_headers     = {
                           "Authorization" = "Bearer ${jsondecode(data.http.aura_authentication.response_body).access_token}"
+                          "Content-Type"  = "application/json"
                       }
+  request_body        = jsonencode({
+                          "version": "",
+                          "region": "",
+                          "memory": "",
+                          "name": "",
+                          "type": "",
+                          "tenant_id": "",
+                          "cloud_provider": ""
+                        })
 }
