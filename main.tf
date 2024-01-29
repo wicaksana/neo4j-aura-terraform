@@ -20,12 +20,12 @@ data "http" "create_aura_instance" {
                           "Content-Type"  = "application/json"
                       }
   request_body        = jsonencode({
-                          "version": "",
-                          "region": "",
-                          "memory": "",
-                          "name": "",
-                          "type": "",
-                          "tenant_id": "",
-                          "cloud_provider": ""
+                          "version": var.aura_version,
+                          "region": var.aura_region,
+                          "memory": var.aura_memory,
+                          "name": var.aura_name,
+                          "type": var.aura_type,
+                          "tenant_id": var.aura_tenant_id,
+                          "cloud_provider": var.aura_cloud_provider
                         })
 }
