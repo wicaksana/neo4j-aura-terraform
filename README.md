@@ -4,6 +4,8 @@ WIP. Note that creating the instance via data block is not the correct approach 
 
 ## How
 
+You need to generate the client id and client secret from Neo4j Aura console. Please refer to this [doc](https://neo4j.com/docs/aura/platform/api/authentication/).
+
 Using Terraform on the machine:
 
 ```bash 
