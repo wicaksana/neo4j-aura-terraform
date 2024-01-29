@@ -1,6 +1,7 @@
 # neo4j-aura-terraform
 
-WIP. Note that creating the instance via data block is not the correct approach because it is not maintained as a Terraform resource. Will fix it later.
+This is a Terraform project to manage Neo4j Aura instance lifecycle (supported: create and delete the instance).
+Limitation: currently only supports GCP. AWS & Azure will come later.
 
 ## How
 
