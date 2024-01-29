@@ -1,6 +1,6 @@
 # neo4j-aura-terraform
 
-WIP.
+WIP. Note that creating the instance via data block is not the correct approach because it is not maintained as a Terraform resource. Will fix it later.
 
 ## How
 
