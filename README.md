@@ -5,6 +5,8 @@ Limitation: currently only supports GCP. AWS & Azure will come later.
 
 ## How
 
+### Create an Instance
+
 You need to generate the client id and client secret from Neo4j Aura console. Please refer to this [doc](https://neo4j.com/docs/aura/platform/api/authentication/).
 
 Using Terraform on the machine:
@@ -44,3 +46,13 @@ docker run --rm -it \
 hashicorp/terraform:1.7.1 \
 apply
 ```
+
+### Delete the instance
+
+```
+terraform destroy
+```
+
+Before destroying the instance resource, Terraform will be asking 
+the same variables again (cloud provider, instance memory, etc.). 
+This is [a known issue](https://github.com/hashicorp/terraform/issues/23552).
