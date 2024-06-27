@@ -25,6 +25,7 @@ Using Terraform on a container:
 export TF_VAR_client_id=<client-id>
 export TF_VAR_client_secret=<client-secret>
 
+# Initialize Terraform
 docker run --rm -it \
 -e TF_VAR_client_id=$TF_VAR_client_id \
 -e TF_VAR_client_secret=$TF_VAR_client_secret \
@@ -32,6 +33,7 @@ docker run --rm -it \
 hashicorp/terraform:1.7.1 \
 init
 
+# Create Terraform plan, if you want.
 docker run --rm -it \
 -e TF_VAR_client_id=$TF_VAR_client_id \
 -e TF_VAR_client_secret=$TF_VAR_client_secret \
@@ -39,18 +41,31 @@ docker run --rm -it \
 hashicorp/terraform:1.7.1 \
 plan
 
+# Create the Aura instance.
 docker run --rm -it \
 -e TF_VAR_client_id=$TF_VAR_client_id \
 -e TF_VAR_client_secret=$TF_VAR_client_secret \
 -w /tf -v $PWD:/tf \
 hashicorp/terraform:1.7.1 \
 apply
+
 ```
 
 ### Delete the instance
 
+Using local terraform:
 ```
-terraform destroy
+terraform destroy -input=false
+```
+
+Using Docker:
+```
+docker run --rm -it \
+-e TF_VAR_client_id=$TF_VAR_client_id \
+-e TF_VAR_client_secret=$TF_VAR_client_secret \
+-w /tf -v $PWD:/tf \
+hashicorp/terraform:1.7.1 \
+destroy -input=false
 ```
 
 Before destroying the instance resource, Terraform will be asking 

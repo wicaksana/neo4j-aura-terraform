@@ -2,7 +2,6 @@ variable "aura_version" {
     type    = string
     description = "Neo4j Aura version"
     default = "5"
-    nullable = false
     
     validation {
         condition = contains(
@@ -16,7 +15,7 @@ variable "aura_version" {
 variable "aura_cloud_provider" {
     type = string
     description = "Choose the cloud provider (options: gcp,aws,azure)"
-    nullable = false
+    default = "gcp"
 
     validation {
         condition = contains(
@@ -27,31 +26,28 @@ variable "aura_cloud_provider" {
     }
 }
 
-# TODO validation
 variable "aura_region" {
     type = string
     description = "The region where the instance is hosted. Please refer to your Aura Tenants instance configurations, returned by the GET /tenants/{tenantId} endpoint, for a list of valid regions for your tenant"
-    nullable = false
+    default = "asia-southeast1"
 }
 
-# TODO validation 
 variable "aura_memory" {
     type = string
-    description = "The size of the instance memory in GB. Please refer to your Aura Tenants instance configurations, returned by the GET /tenants/{tenantId} endpoint, for a list of valid sizes for your tenant"
-    nullable = false
+    description = "The size of the instance memory in GB (example: 8GB, 16GB, ...). Please refer to your Aura Tenants instance configurations, returned by the GET /tenants/{tenantId} endpoint, for a list of valid sizes for your tenant"
+    default = "8GB"
 }
 
-# TODO validation
 variable "aura_name" {
     type = string
     description = "Aura instance name"
-    nullable = false
+    default = "test-instance"
 }
 
 variable "aura_type" {
     type = string
     description = "Aura type"
-    nullable = false
+    default = "professional-db"
 
     validation {
         condition = contains(
@@ -68,11 +64,10 @@ variable "aura_type" {
     }
 }
 
-# TODO validation
 variable "aura_tenant_id" {
     type = string
     description = "Neo4j Aura tenant ID"
-    nullable = false
+    default = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
 }
 
 variable client_id {}
